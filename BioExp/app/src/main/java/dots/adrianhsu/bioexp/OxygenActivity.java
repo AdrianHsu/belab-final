@@ -16,7 +16,7 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class WeightActivity extends ActionBarActivity {
+public class OxygenActivity extends ActionBarActivity {
 
     private ThingSpeakChannel tsChannel;
     private ThingSpeakLineChart tsChart;
@@ -25,7 +25,7 @@ public class WeightActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weight);
+        setContentView(R.layout.activity_oxygen);
 
         int channelNum = 284277;
         // Connect to ThinkSpeak Channel 284277
@@ -39,7 +39,7 @@ public class WeightActivity extends ActionBarActivity {
                 getSupportActionBar().setSubtitle("Channel " + channelId);
                 // Notify last update time of the Channel feed through a Toast message
                 Date lastUpdate = channelFeed.getChannel().getUpdatedAt();
-                Toast.makeText(WeightActivity.this, lastUpdate.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(OxygenActivity.this, lastUpdate.toString(), Toast.LENGTH_LONG).show();
             }
         });
         // Fetch the specific Channel feed
@@ -50,12 +50,12 @@ public class WeightActivity extends ActionBarActivity {
         calendar.add(Calendar.MINUTE, -5);
 
         // Configure LineChartView
-        chartView = (LineChartView) findViewById(R.id.chart);
+        chartView = (LineChartView) findViewById(R.id.chart2);
         chartView.setZoomEnabled(true);
         chartView.setValueSelectionEnabled(true);
 
-        // Create a line chart from Field1 of ThinkSpeak Channel channelNum
-        tsChart = new ThingSpeakLineChart(channelNum, 1);
+        // Create a line chart from Field "2" of ThinkSpeak Channel channelNum
+        tsChart = new ThingSpeakLineChart(channelNum, 2);
         // Get 200 entries at maximum
         tsChart.setNumberOfEntries(200);
         // Set value axis labels on 10-unit interval

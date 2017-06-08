@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dots.adrianhsu.bioexp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission
         android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission
@@ -31,6 +33,16 @@
         <activity
             android:name=".ShowChartActivity"
             android:label="@string/show_chart_title"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".WeightActivity"
+            android:label="@string/show_chart_weight"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".OxygenActivity"
+            android:label="@string/show_chart_oxygen"
             android:screenOrientation="portrait">
         </activity>
     </application>

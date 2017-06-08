@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     Button btlistBtn;
     Button showChartBtn;
     Button disconBtn;
+    Button weightBtn;
+    Button oxygenBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent;
                 intent = new Intent(getApplicationContext(), ShowChartActivity.class);
+                startActivity(intent);
+            }
+        });
+        weightBtn = (Button) findViewById(R.id.weightBtn);
+        oxygenBtn = (Button) findViewById(R.id.oxygenBtn);
+        weightBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(getApplicationContext(), WeightActivity.class);
+                startActivity(intent);
+            }
+        });
+        oxygenBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(getApplicationContext(), OxygenActivity.class);
                 startActivity(intent);
             }
         });
