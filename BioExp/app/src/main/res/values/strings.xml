@@ -8,5 +8,7 @@
     <string name="show_chart_weight">這是您的 體重折線圖</string>
     <string name="show_chart_oxygen">這是您的 血氧折線圖</string>
     <string name="show_chart_bpm">這是您的 心跳折線圖</string>
+    <string name="show_splash">٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶ </string>
+
     <string name="ble_warning">Adrian: If no devices are listed please pair your device in Android settings</string>
 </resources>

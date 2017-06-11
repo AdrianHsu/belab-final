@@ -50,6 +50,11 @@
             android:label="@string/show_chart_bpm"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/show_splash"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

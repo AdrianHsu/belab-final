@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 // Action on last step Finish button
-                MainActivity.this.startActivity(new Intent(MainActivity.this, MainActivity.class));
+                Intent intent;
+                intent = new Intent(MainActivity.this, SplashActivity.class);
+                startActivity(intent);
                 MainActivity.this.finish();
             }
         });
@@ -47,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChangeStep(int position, SteppersItem activeStep) {
                 // Action when click continue on each step
-                Toast.makeText(MainActivity.this, "Step changed to: " + activeStep.getLabel() + " (" + position + ")",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Step changed to: " + activeStep.getLabel() + " (" + position + ")",
+//                        Toast.LENGTH_SHORT).show();
             }
         });
 
