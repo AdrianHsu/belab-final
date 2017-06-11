@@ -49,7 +49,7 @@ public class ShowChartActivity extends AppCompatActivity {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     // MAC-address of Bluetooth module (you must edit this line)
-    private static String address = "98:D3:31:20:1D:E3";
+    private static String address = "20:16:10:31:64:61";
 
     /** Called when the activity is first created. */
     @Override
