@@ -24,11 +24,11 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class FirstFragment extends Fragment {
 
     private Button.OnClickListener onClickListener;
 
-    public MainFragment() {
+    public FirstFragment() {
         // Required empty public constructor
     }
 
@@ -37,7 +37,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         Button button = (Button) view.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {

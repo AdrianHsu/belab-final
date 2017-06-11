@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    tools:context=".MainFragment">
+    tools:context=".FourthFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -12,9 +12,9 @@
         android:text="" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button" />
+        android:text= "藍芽連線檢測"
+        android:id="@+id/button4" />
 
 </LinearLayout>
