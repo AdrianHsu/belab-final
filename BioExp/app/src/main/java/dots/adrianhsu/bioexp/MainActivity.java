@@ -8,6 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
+import me.drozdzynski.library.steppers.OnCancelAction;
+import me.drozdzynski.library.steppers.OnChangeStepAction;
+import me.drozdzynski.library.steppers.OnFinishAction;
+import me.drozdzynski.library.steppers.SteppersItem;
+import me.drozdzynski.library.steppers.SteppersView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,58 +25,55 @@ public class MainActivity extends AppCompatActivity {
     Button weightBtn;
     Button oxygenBtn;
     Button bpmBtn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btlistBtn = (Button) findViewById(R.id.btlistBtn);
-        showChartBtn = (Button) findViewById(R.id.showChartBtn);
-        disconBtn = (Button) findViewById(R.id.disconBtn);
-        weightBtn = (Button) findViewById(R.id.weightBtn);
-        oxygenBtn = (Button) findViewById(R.id.oxygenBtn);
-        bpmBtn = (Button) findViewById(R.id.bpmBtn);
-        btlistBtn.setOnClickListener(new View.OnClickListener() {
+
+
+        SteppersView.Config steppersViewConfig = new SteppersView.Config();
+        steppersViewConfig.setOnFinishAction(new OnFinishAction() {
             @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getApplicationContext(), BtlistActivity.class);
-                startActivity(intent);
-            }
-        });
-        showChartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getApplicationContext(), ShowChartActivity.class);
-                startActivity(intent);
+            public void onFinish() {
+                // Action on last step Finish button
             }
         });
 
-        weightBtn.setOnClickListener(new View.OnClickListener() {
+        steppersViewConfig.setOnCancelAction(new OnCancelAction() {
             @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getApplicationContext(), WeightActivity.class);
-                startActivity(intent);
+            public void onCancel() {
+                // Action when click cancel on one of steps
             }
         });
 
-        oxygenBtn.setOnClickListener(new View.OnClickListener() {
+        steppersViewConfig.setOnChangeStepAction(new OnChangeStepAction() {
             @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getApplicationContext(), OxygenActivity.class);
-                startActivity(intent);
+            public void onChangeStep(int position, SteppersItem activeStep) {
+                // Action when click continue on each step
             }
         });
 
-        bpmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent;
-                intent = new Intent(getApplicationContext(), BPMActivity.class);
-                startActivity(intent);
-            }
-        });
+// Setup Support Fragment Manager for fragments in steps
+        steppersViewConfig.setFragmentManager(getSupportFragmentManager());
+
+
+        ArrayList<SteppersItem> steps = new ArrayList<>();
+
+        SteppersItem stepFirst = new SteppersItem();
+
+        stepFirst.setLabel("Title of step");
+        stepFirst.setSubLabel("Subtitle of step");
+        stepFirst.setFragment(new MainFragment());
+        stepFirst.setPositiveButtonEnable(false);
+
+        steps.add(stepFirst);
+
+        SteppersView steppersView = (SteppersView) findViewById(R.id.steppersView);
+        steppersView.setConfig(steppersViewConfig);
+        steppersView.setItems(steps);
+        steppersView.build();
     }
 }

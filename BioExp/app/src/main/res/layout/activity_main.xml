@@ -15,56 +15,59 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <me.drozdzynski.library.steppers.SteppersView
+        android:id="@+id/steppersView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <!--<Button-->
+        <!--android:id="@+id/btlistBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="BTList"-->
+        <!--tools:layout_editor_absoluteX="147dp"-->
+        <!--tools:layout_editor_absoluteY="37dp" />-->
 
-    <Button
-        android:id="@+id/btlistBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BTList"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="37dp" />
-
-    <Button
-        android:id="@+id/disconBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Disconnect"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="178dp" />
-    <Button
-        android:id="@+id/showChartBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SHOW-CHART"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="109dp" />
-    <Button
-        android:id="@+id/weightBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WEIGHT"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="109dp" />
-    <Button
-        android:id="@+id/oxygenBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OXYGEN"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="109dp" />
-    <Button
-        android:id="@+id/bpmBtn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BPM"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="109dp" />
+    <!--<Button-->
+        <!--android:id="@+id/disconBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Disconnect"-->
+        <!--tools:layout_editor_absoluteX="137dp"-->
+        <!--tools:layout_editor_absoluteY="178dp" />-->
+    <!--<Button-->
+        <!--android:id="@+id/showChartBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="SHOW-CHART"-->
+        <!--tools:layout_editor_absoluteX="137dp"-->
+        <!--tools:layout_editor_absoluteY="109dp" />-->
+    <!--<Button-->
+        <!--android:id="@+id/weightBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="WEIGHT"-->
+        <!--tools:layout_editor_absoluteX="137dp"-->
+        <!--tools:layout_editor_absoluteY="109dp" />-->
+    <!--<Button-->
+        <!--android:id="@+id/oxygenBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="OXYGEN"-->
+        <!--tools:layout_editor_absoluteX="137dp"-->
+        <!--tools:layout_editor_absoluteY="109dp" />-->
+    <!--<Button-->
+        <!--android:id="@+id/bpmBtn"-->
+        <!--style="@style/Widget.AppCompat.Button.Colored"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="BPM"-->
+        <!--tools:layout_editor_absoluteX="137dp"-->
+        <!--tools:layout_editor_absoluteY="109dp" />-->
 
 
 </LinearLayout>
