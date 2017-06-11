@@ -3,7 +3,7 @@
     <item
         android:id="@+id/analysis"
         android:orderInCategory="1"
-        android:title="心電圖雲端分析"
+        android:title="心電圖數據分析"
         app:showAsAction="never" />
 
 

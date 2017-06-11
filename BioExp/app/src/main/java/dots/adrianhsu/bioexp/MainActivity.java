@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button disconBtn;
     Button weightBtn;
     Button oxygenBtn;
-
+    Button bpmBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         btlistBtn = (Button) findViewById(R.id.btlistBtn);
         showChartBtn = (Button) findViewById(R.id.showChartBtn);
         disconBtn = (Button) findViewById(R.id.disconBtn);
+        weightBtn = (Button) findViewById(R.id.weightBtn);
+        oxygenBtn = (Button) findViewById(R.id.oxygenBtn);
+        bpmBtn = (Button) findViewById(R.id.bpmBtn);
         btlistBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        weightBtn = (Button) findViewById(R.id.weightBtn);
-        oxygenBtn = (Button) findViewById(R.id.oxygenBtn);
+
         weightBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         oxygenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,19 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_items, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.analysis:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+
+        bpmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(getApplicationContext(), BPMActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

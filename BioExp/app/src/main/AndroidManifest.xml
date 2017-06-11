@@ -45,6 +45,11 @@
             android:label="@string/show_chart_oxygen"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".BPMActivity"
+            android:label="@string/show_chart_bpm"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

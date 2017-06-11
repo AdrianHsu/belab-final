@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class ShowChartActivity extends AppCompatActivity {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     // MAC-address of Bluetooth module (you must edit this line)
-    private static String address = "98:D3:31:40:0E:48";
+    private static String address = "98:D3:31:20:1D:E3";
 
     /** Called when the activity is first created. */
     @Override
@@ -304,5 +305,19 @@ public class ShowChartActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.analysis:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
