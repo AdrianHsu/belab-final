@@ -55,6 +55,11 @@
             android:label="@string/show_splash"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".AnalysisActivity"
+            android:label="@string/show_analysis"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

@@ -311,10 +311,18 @@ public class ShowChartActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_items, menu);
         return true;
     }
+    ArrayList mylist = new ArrayList<>();
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.analysis:
+                Intent intent;
+                intent = new Intent(ShowChartActivity.this, AnalysisActivity.class);
+                mylist.add(330);
+                mylist.add(168);
+                mylist.add(402);
+                intent.putStringArrayListExtra("mylist", mylist);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
