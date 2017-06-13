@@ -12,24 +12,24 @@
 //to send
 float weight = 0;
 float BPM = 0;
-float SaO2 = 0;
+float SPO2 = 0;
 float temp = 0;
 //HX711
 Hx711 scale(A1, A0);
 float offset = 0;
 float ratio = 20651.94;
-int av_times = 5;
-int thres = 1;
+int av_times = 3;
+int thres = 0;
 int de = av_times - thres - 1;
 //MAX30100
 PulseOximeter pox;
 uint32_t tsLastReport = 0;
 #define REPORTING_PERIOD_MS     1000
 //BT
-const int RX_PIN = 10;
 const int TX_PIN = 11;
+const int RX_PIN = 12;
 SoftwareSerial I2CBT(RX_PIN, TX_PIN);
-const int ANALOG_PIN = A2;
+const int ANALOG_PIN = A3;
 int val = 0;
 unsigned long time;
 //WIFI
@@ -50,7 +50,7 @@ void setup() {
 //Setting up//
 //////////////
   //set up all
-  Serial.begin(115200);
+  Serial.begin(9600);
 
   //set up hx711
   Serial.print("Initializing HX711...");
@@ -65,13 +65,10 @@ void setup() {
   
   //set up max30100
   Serial.print("Initializing MAX30100...");
-  if (!pox.begin()) {
+  while(!pox.begin()) {
     Serial.println("FAILED");
-    for(;;);
-  } 
-  else {
-    Serial.println("SUCCESS");
   }
+  Serial.println("SUCCESS");
   
   //set up bt
   I2CBT.begin(38400);
@@ -88,6 +85,7 @@ void setup() {
 /////////////
   //get weight
   Serial.print("Weighting...");
+  delay(5000);
   weight = (scale.averageValue() - offset) / ratio;
   weight += (scale.averageValue() - offset) / ratio;
   weight /= 2;
@@ -95,7 +93,7 @@ void setup() {
 
   //get max30100 info
   BPM = 0;
-  SaO2 = 0;
+  SPO2 = 0;
   temp = 0;
   Serial.print("Measuring...");
   for (int  i = 0; i < av_times; i++){
@@ -103,12 +101,12 @@ void setup() {
     float tmp1 = pox.getHeartRate();
     float tmp2 = pox.getSpO2();
     float tmp3 = pox.getTemperature();
-    if (millis() - tsLastReport > REPORTING_PERIOD_MS && tmp1>50 && tmp1<110) {
+    if (millis() - tsLastReport > REPORTING_PERIOD_MS && tmp1>60 && tmp1<100) {
       Serial.print(av_times - i);
       Serial.print("..");
       if (i>thres) {
         BPM += tmp1;
-        SaO2 += tmp2;
+        SPO2 += tmp2;
         temp += tmp3;
       }
       tsLastReport = millis();
@@ -118,7 +116,7 @@ void setup() {
   }
   Serial.println("SUCCESS");
   BPM /= de;
-  SaO2 /= de;
+  SPO2 /= de;
   temp /= de;
 
 
@@ -131,8 +129,8 @@ void setup() {
   Serial.print( "Heart Rate: " );
   Serial.print( BPM,1 );
   Serial.print( " bpm | " );
-  Serial.print( "SaO2: " );
-  Serial.print( SaO2*0.99,1 );
+  Serial.print( "SPO2: " );
+  Serial.print( SPO2*0.99,1 );
   Serial.print( "% | " );
   Serial.print( "Temperature: " );
   Serial.print( temp*0.9,1 );
@@ -144,7 +142,7 @@ void setup() {
 /////////////
 //wifi
   Serial.print("WIFI Uploading...");
-  while(!SentOnCloud(String(weight), String(BPM), String(SaO2))){delay(100);}
+  while(!SentOnCloud(String(weight), String(BPM), String(SPO2))){delay(500);}
   Serial.println("SUCCESS");
 }
 
@@ -160,6 +158,7 @@ void loop() {
   I2CBT.write(pack[0]);
   I2CBT.write(pack[1]);
   Serial.println(val);
+  delay(10);
 }
 
 
@@ -183,15 +182,14 @@ bool SentOnCloud( String T, String H, String W )
     if( debug.find( "Error" ) )
     {
         Serial.print( "RECEIVED: Error\nExit1" );
-        return;
     }
     cmd = GET + "&field1=" + T + "&field2=" + H + "&field3=" + W + "\r\n";
     debug.print( "AT+CIPSEND=" );
     debug.println( cmd.length() );
     if(debug.find( ">" ) )
     {
-        //Serial.print(">");
-        //Serial.print(cmd);
+        Serial.print(">");
+        Serial.print(cmd);
         debug.print(cmd);
         ret = true;
     }
@@ -225,8 +223,8 @@ void Loding(String state){
       }
       else
       {
-        Serial.print("Wifi Loading...");
-        delay(750);
+        Serial.print("Wifi Loading...\n");
+        delay(500);
       }
     }
 }

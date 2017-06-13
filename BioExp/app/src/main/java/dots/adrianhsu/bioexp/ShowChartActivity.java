@@ -49,7 +49,7 @@ public class ShowChartActivity extends AppCompatActivity {
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     // MAC-address of Bluetooth module (you must edit this line)
-    private static String address = "20:16:10:31:64:61";
+    private static String address = "20:16:10:31:64:61";//;"20:16:10:31:66:75";
 
     /** Called when the activity is first created. */
     @Override
@@ -311,18 +311,10 @@ public class ShowChartActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_items, menu);
         return true;
     }
-    ArrayList mylist = new ArrayList<>();
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.analysis:
-                Intent intent;
-                intent = new Intent(ShowChartActivity.this, AnalysisActivity.class);
-                mylist.add(330);
-                mylist.add(168);
-                mylist.add(402);
-                intent.putStringArrayListExtra("mylist", mylist);
-                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
